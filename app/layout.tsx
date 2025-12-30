@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  Montserrat_Alternates,
+  Space_Grotesk,
+} from "next/font/google";
 import "./globals.css";
 import HomeProvider from "./provider";
 
@@ -8,9 +12,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const montserratAlternates = Montserrat_Alternates({
+  variable: "--font-montserrat-alternates",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -26,11 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} antialiased font-primary`}
+        className={`${plusJakartaSans.variable} ${montserratAlternates.variable} antialiased font-primary`}
       >
-        <HomeProvider>
-        {children}
-        </HomeProvider>
+        <HomeProvider>{children}</HomeProvider>
       </body>
     </html>
   );
