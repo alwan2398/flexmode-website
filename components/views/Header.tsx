@@ -1,15 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import {
-  Menu,
-  Search,
-  ShoppingBag,
-  User,
-  ChevronLeft,
-  ChevronRight,
-  X,
-} from "lucide-react";
+import { Menu, Search, ShoppingBag, User, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -36,14 +28,8 @@ export default function Header() {
   }, [isSearchOpen]);
 
   return (
-    <header className="w-full">
-      <div className="bg-black text-white h-[40px] flex items-center justify-center relative px-4 z-60">
-        <button
-          aria-label="Previous announcement"
-          className="absolute left-4 md:static md:mr-4 text-white/70 hover:text-white transition-colors"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
+    <header className="w-full z-50 fixed top-0">
+      <div className="bg-zinc-950 text-white h-[40px] flex items-center justify-center relative px-4 z-60">
         <p className="text-xs md:text-sm font-medium text-center">
           END OF SEASON SALE: UP TO 50% OFF
         </p>
@@ -51,26 +37,26 @@ export default function Header() {
           aria-label="Next announcement"
           className="absolute right-4 md:static md:ml-4 text-white/70 hover:text-white transition-colors"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronDown className="w-4 h-4" />
         </button>
       </div>
 
       <nav className="sticky top-0 z-50 bg-white border-b-2 border-zinc-200">
-        <div className="max-w-screen-2xl mx-auto px-4 md:px-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-3 items-center h-[72px] md:h-[88px]">
             <div className="flex items-center justify-start">
               {/* Desktop Menu */}
-              <ul className="hidden md:flex items-center gap-8">
+              <ul className="hidden lg:flex items-center gap-8">
                 {navLinks.map((link) => (
                   <li key={link.label} className="relative group">
                     <Link
                       href={link.href}
-                      className="text-[16px] font-medium text-black hover:text-gray-600 transition-colors relative z-10 block py-2"
+                      className="text-[16px] font-medium text-zinc-950 hover:text-zinc-800 transition-colors relative z-10 block py-2"
                     >
                       {link.label}
                     </Link>
                     <motion.span
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-black origin-center"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-zinc-950 origin-center"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{
@@ -79,12 +65,12 @@ export default function Header() {
                         damping: 30,
                       }}
                     />
-                    <div className="absolute bottom-1 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center ease-out" />
+                    <div className="absolute bottom-1 left-0 w-full h-[2px] bg-zinc-950 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center ease-out" />
                   </li>
                 ))}
               </ul>
 
-              <div className="md:hidden p-1 -ml-1 text-black relative w-8 h-8 flex items-center justify-center">
+              <div className="lg:hidden p-1 -ml-1 text-zinc-950 relative w-8 h-8 flex items-center justify-center">
                 <AnimatePresence mode="wait" initial={false}>
                   {isMobileMenuOpen ? (
                     <motion.button
@@ -152,7 +138,7 @@ export default function Header() {
                 <button
                   aria-label="Search"
                   onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="cursor-pointer text-black hover:text-gray-600 transition-colors z-10"
+                  className="cursor-pointer text-zinc-950 hover:text-zinc-800 transition-colors z-10"
                 >
                   <Search className="w-5 h-5" />
                 </button>
@@ -162,24 +148,24 @@ export default function Header() {
               <button
                 aria-label="Search"
                 onClick={() => setIsMobileSearchOpen(true)}
-                className="md:hidden cursor-pointer text-black hover:text-gray-600 transition-colors"
+                className="md:hidden cursor-pointer text-zinc-950 hover:text-zinc-800 transition-colors"
               >
                 <Search className="w-5 h-5" />
               </button>
 
               <button
                 aria-label="My Account"
-                className="hidden md:block cursor-pointer text-black hover:text-gray-600 transition-colors"
+                className="hidden md:block cursor-pointer text-zinc-950 hover:text-zinc-800 transition-colors"
               >
                 <User className="w-5 h-5" />
               </button>
 
               <button
                 aria-label="Shopping Bag"
-                className="cursor-pointer text-black hover:text-gray-600 transition-colors relative group"
+                className="cursor-pointer text-zinc-950 hover:text-zinc-800 transition-colors relative group"
               >
                 <ShoppingBag className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-zinc-950 text-[9px] font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity">
                   0
                 </span>
               </button>
@@ -195,14 +181,14 @@ export default function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden bg-white border-b border-gray-100 shadow-lg"
+              className="lg:hidden overflow-hidden bg-white border-b border-zinc-100 shadow-lg"
             >
               <div className="p-4 flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-lg font-medium text-black py-2 border-b border-gray-50 last:border-0"
+                    className="text-lg font-medium text-zinc-950 py-2 border-b border-zinc-50 last:border-0"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
