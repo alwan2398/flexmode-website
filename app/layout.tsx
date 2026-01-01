@@ -24,13 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} antialiased font-primary`}
       >
-        <HomeProvider>
-        {children}
-        </HomeProvider>
+        <HomeProvider>{children}</HomeProvider>
       </body>
     </html>
   );
