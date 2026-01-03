@@ -31,7 +31,7 @@ export default function Header() {
     <header className="w-full z-50 fixed top-0">
       <div className="bg-zinc-950 text-white h-[40px] flex items-center justify-center relative px-4 z-60">
         <p className="text-xs md:text-sm font-medium text-center">
-          END OF SEASON SALE: UP TO 50% OFF
+          GRATIS ONGKIR MULAI Rp 500K DI JABODETABEK
         </p>
         <button
           aria-label="Next announcement"
